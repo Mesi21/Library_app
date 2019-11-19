@@ -91,7 +91,11 @@ nav {
 #sidebar form input::placeholder,#sidebar form textarea::placeholder {
     color: rgb(161, 161, 161);
 }
-
+.empty-note{
+    text-align: center;
+    margin: 4rem;
+    color:  lightgray;
+}
 table {
   margin: 0px auto;
   border: 1px solid blue;
