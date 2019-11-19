@@ -14,13 +14,27 @@
 
   <nav>
     <h1 class="app-title">Library app 📚</h1>  
-    <button id="new-book-btn">
+    <button id="new-book-btn" class="btn">
       <i class="material-icons">
         add_circle_outline
       </i>
       New Book
     </button>
   </nav>
+  <aside id="sidebar">
+      <button id="close-btn" class="btn">
+        <i class="material-icons">
+            close
+        </i>
+      </button>
+
+      <form id="new-book-form">
+          <input type="text" placeholder="Title">
+          <input type="text" placeholder="Author">
+          <textarea placeholder="description"></textarea>
+          <button class="btn" id="save-btn">Save</button>
+      </form>
+  </aside>
   <div id="content"></div>
   <script src="js/main.js"></script>
 </body>
