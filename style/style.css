@@ -62,39 +62,41 @@ nav {
   );
   text-align: center;
 }
-#sidebar h1{
-    font-size: 3rem;
+#sidebar h1 {
+  font-size: 3rem;
 }
-#close-btn{
-    background-color: red;
-    margin: 20px   
+#close-btn {
+  background-color: red;
+  margin: 20px;
 }
 #close-btn i {
-    margin: 0;
+  margin: 0;
 }
-#sidebar form{
-    width: 50%;
-    margin: 0px auto;
+#sidebar form {
+  width: 50%;
+  margin: 0px auto;
 }
-#sidebar form input, #sidebar form textarea{
-    display: block;
-    outline: none;
-    border: none;
-    margin: 20px;
-    padding: 1rem 2rem;
-    font-size: 1.8rem;
-    font-family: "Calistoga", cursive;
-    background-color:#00345c;
-    color: white;
-    width: 100%;
+#sidebar form input,
+#sidebar form textarea {
+  display: block;
+  outline: none;
+  border: none;
+  margin: 20px;
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  font-family: "Calistoga", cursive;
+  background-color: #00345c;
+  color: white;
+  width: 100%;
 }
-#sidebar form input::placeholder,#sidebar form textarea::placeholder {
-    color: rgb(161, 161, 161);
+#sidebar form input::placeholder,
+#sidebar form textarea::placeholder {
+  color: rgb(161, 161, 161);
 }
-.empty-note{
-    text-align: center;
-    margin: 4rem;
-    color:  lightgray;
+.empty-note {
+  text-align: center;
+  margin: 4rem;
+  color: lightgray;
 }
 table {
   margin: 0px auto;
@@ -109,4 +111,13 @@ table td,
 table th {
   border: 1px solid blue;
   padding: 1.5rem 3rem;
+}
+
+.not-read i {
+  color: goldenrod;
+  font-size: 2rem;
+}
+.read i {
+  color: green;
+  font-size: 2rem;
 }

@@ -4,6 +4,7 @@ const closeSidebarBtn = document.getElementById("close-btn");
 const saveNewBookBtn = document.getElementById("save-btn");
 const contentElement = document.getElementById("content");
 const formElement = document.getElementById("new-book-form");
+
 let library = [];
 
 const Book = function([title, author, descript]) {
@@ -23,13 +24,14 @@ const toggleSidebar = () =>
 function render() {
   if (library.length > 0) {
     let books = `
-    <table>
+    <table id="table">
       <thead>
         <tr>
           <th>Id</th>
           <th>Author</th>
           <th>Title</th>
           <th>Description</th>
+          <th>Status</th>
         </tr>
       </thead>
     <tbody>`;
@@ -41,14 +43,19 @@ function render() {
           <td>${title}</td>
           <td>${author}</td>
           <td>${descript}</td>
+          <td id="status-${i}" class="not-read"><i class="material-icons">
+          maximize
+          </i></td>
         </tr>`;
       i++;
     });
     books += `</tbody></table>`;
     contentElement.innerHTML = books;
   } else {
-    contentElement.innerHTML =
-      "<hr width='80%'><h1 class='empty-note'> There is no book in this library</h1>";
+    contentElement.innerHTML = `<table id='table'>
+        <hr width='80%'>
+        <h1 class='empty-note'> There is no book in this library</h1>
+      </table>`;
   }
 }
 
@@ -62,8 +69,6 @@ closeSidebarBtn.addEventListener("click", () => {
   toggleSidebar();
 });
 
-saveNewBookBtn.addEventListener("click", () => {});
-
 formElement.addEventListener("submit", e => {
   const formData = new FormData(e.target);
   const data = [];
@@ -74,5 +79,21 @@ formElement.addEventListener("submit", e => {
   render();
   formElement.reset();
   toggleSidebar();
+  e.preventDefault();
+});
+
+contentElement.addEventListener("click", e => {
+  document.getElementById(e.target.id).innerHTML =
+    document.getElementById(e.target.id).className === "not-read"
+      ? `<i class="material-icons">
+      done
+      </i>`
+      : `<i class="material-icons">
+      maximize
+      </i>`;
+  document.getElementById(e.target.id).className =
+    document.getElementById(e.target.id).className === "not-read"
+      ? "read"
+      : "not-read";
   e.preventDefault();
 });
