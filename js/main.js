@@ -1,3 +1,6 @@
+const sidebarElement = document.getElementById('sidebar');
+const addNewBookBtn = document.getElementById('new-book-btn');
+const closeSidebarBtn = document.getElementById('close-btn');
 let library = [];
 
 const Book = function(title, author, descript) {
@@ -43,3 +46,11 @@ function render() {
 }
 
 render();
+
+addNewBookBtn.addEventListener('click', () => {
+  sidebarElement.style.display = 'block';
+});
+
+closeSidebarBtn.addEventListener('click', ()=> {
+  sidebarElement.style.display = 'none';
+})
