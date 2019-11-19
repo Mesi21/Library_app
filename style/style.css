@@ -60,6 +60,10 @@ nav {
     #002e58,
     #00345c
   );
+  text-align: center;
+}
+#sidebar h1{
+    font-size: 3rem;
 }
 #close-btn{
     background-color: red;
