@@ -4,10 +4,8 @@ const closeSidebarBtn = document.getElementById('close-btn');
 const contentElement = document.getElementById('content');
 const formElement = document.getElementById('new-book-form');
 const getFromLocalStorage = () => JSON.parse(localStorage.getItem('library'));
-const saveToLocalStorage = () => localStorage.setItem('library', JSON.stringify(library));
-
 const library = getFromLocalStorage() || [];
-
+const saveToLocalStorage = () => localStorage.setItem('library', JSON.stringify(library));
 function Book([title, noOfPages, author, descript, status = 'not-read']) {
   this.title = title;
   this.author = author;
@@ -23,7 +21,6 @@ function addBooks(book) {
 function deleteBook(id) { 
   library.splice(id, 1); 
 }
-
 const toggleSidebar = () => {
   const state = sidebarElement.style.display === 'block' ? 'none' : 'block';
   sidebarElement.style.display = state;
@@ -103,7 +100,7 @@ contentElement.addEventListener('click', (e) => {
   const parentNodeId = e.target.parentNode.id
   const clickType = e.target.getAttribute('data-click-type');
   // eslint-disable-next-line no-restricted-globals
-  const hasBookId = parentNodeId !== '' && !isNaN(Number(parentNodeId));
+  const hasBookId = (parentNodeId !== '' && !isNaN(Number(parentNodeId)));
 
   if (hasBookId) {
     if (clickType === 'status') {
