@@ -21,8 +21,9 @@ HTML & CSS
 Javascript
 
 ## Contributors:
-	- [Molnar Emese](https://github.com/Mesi21)
-	- [Pon Muthu Selvam N](https://github.com/imhta)
+
+- [Molnar Emese](https://github.com/Mesi21)
+- [Pon Muthu Selvam N](https://github.com/imhta)
 
 ## Show your support
 
