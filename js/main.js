@@ -1,12 +1,12 @@
-const sidebarElement = document.getElementById("sidebar");
-const addNewBookBtn = document.getElementById("new-book-btn");
-const closeSidebarBtn = document.getElementById("close-btn");
-const contentElement = document.getElementById("content");
-const formElement = document.getElementById("new-book-form");
+const sidebarElement = document.getElementById('sidebar');
+const addNewBookBtn = document.getElementById('new-book-btn');
+const closeSidebarBtn = document.getElementById('close-btn');
+const contentElement = document.getElementById('content');
+const formElement = document.getElementById('new-book-form');
 
-const library = JSON.parse(localStorage.getItem("library")) || [];
+const library = JSON.parse(localStorage.getItem('library')) || [];
 
-function Book([title, author, descript, status = "not-read"]) {
+function Book([title, author, descript, status = 'not-read']) {
   this.title = title;
   this.author = author;
   this.descript = descript;
@@ -18,7 +18,7 @@ function addBooks(book) {
 }
 
 const toggleSidebar = () => {
-  let state = sidebarElement.style.display === "block" ? "none" : "block";
+  const state = sidebarElement.style.display === 'block' ? 'none' : 'block';
   sidebarElement.style.display = state;
 };
 
@@ -50,7 +50,7 @@ function render() {
           </i>
           </td>
         </tr>`;
-      i+=1;
+      i += 1;
     });
     books += `</tbody></table>`;
     contentElement.innerHTML = books;
@@ -64,30 +64,30 @@ function render() {
 
 render();
 
-addNewBookBtn.addEventListener("click", () => {
+addNewBookBtn.addEventListener('click', () => {
   toggleSidebar();
 });
 
-closeSidebarBtn.addEventListener("click", () => {
+closeSidebarBtn.addEventListener('click', () => {
   toggleSidebar();
 });
 
-formElement.addEventListener("submit", (e) => {
+formElement.addEventListener('submit', (e) => {
   const formData = new FormData(e.target);
   const data = [];
-  formData.forEach(inputData => {
+  formData.forEach((inputData) => {
     data.push(inputData);
   });
   addBooks(new Book(data));
-  localStorage.setItem("library", JSON.stringify(library));
+  localStorage.setItem('library', JSON.stringify(library));
   render();
   formElement.reset();
   toggleSidebar();
   e.preventDefault();
 });
 
-contentElement.addEventListener("click", (e) => {
-  if(Number(e.target.parentNode.id) != NaN) {
+contentElement.addEventListener('click', (e) => {
+  if (isNaN(Number(e.target.parentNode.id)))  {
     const bookId = Number(e.target.parentNode.id) - 1;
     const currentState = library[bookId].status;
     library[bookId].status = currentState === 'not-read' ? 'read' : 'not-read';
