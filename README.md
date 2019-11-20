@@ -5,7 +5,7 @@
 A library app to add new books and toggle between read and unread status.
 
 
-### ✨ [Demo](https://mesi21.github.io/)
+### ✨ [Demo](https://libraryapp.imhtapm.now.sh/)
 
 ## Get Started
 
