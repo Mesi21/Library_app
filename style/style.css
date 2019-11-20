@@ -78,14 +78,15 @@ nav {
 #close-btn i {
   margin: 0;
 }
-#new-book-form{
+#new-book-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
-#sidebar input, #sidebar textarea{
+#sidebar input,
+#sidebar textarea {
   max-width: 400px;
 }
 #sidebar form input,
@@ -105,7 +106,7 @@ nav {
 #sidebar form textarea::placeholder {
   color: rgb(161, 161, 161);
 }
-#save-btn[type=submit]{
+#save-btn[type="submit"] {
   background-color: blue;
   border-radius: 2rem;
   color: white;
