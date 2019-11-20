@@ -3,7 +3,6 @@ body {
   font-family: "Calistoga", cursive;
   color: white;
   letter-spacing: 0.2rem;
-  height: 100vh;
   background-image: linear-gradient(
     to right bottom,
     #001e4a,
@@ -12,9 +11,9 @@ body {
     #002e58,
     #00345c
   );
-  background-size: cover;
-  background-repeat: no-repeat;
-  overflow: hidden;
+  background-size: 100%;
+  background-repeat:no-repeat;
+  overflow: scroll;
 }
 
 nav {
