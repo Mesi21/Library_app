@@ -1,26 +1,26 @@
-const sidebarElement = document.getElementById('sidebar');
-const addNewBookBtn = document.getElementById('new-book-btn');
-const closeSidebarBtn = document.getElementById('close-btn');
-const saveNewBookBtn = document.getElementById('save-btn');
-const contentElement = document.getElementById('content');
-const formElement = document.getElementById('new-book-form');
+const sidebarElement = document.getElementById("sidebar");
+const addNewBookBtn = document.getElementById("new-book-btn");
+const closeSidebarBtn = document.getElementById("close-btn");
+const contentElement = document.getElementById("content");
+const formElement = document.getElementById("new-book-form");
 
-let library = JSON.parse(localStorage.getItem('library')) || [];
+const library = JSON.parse(localStorage.getItem("library")) || [];
 
-const Book = function([title, author, descript, status = 'not read']) {
+function Book([title, author, descript, status = "not-read"]) {
   this.title = title;
   this.author = author;
   this.descript = descript;
   this.status = status;
-};
+}
 
 function addBooks(book) {
   library.push(book);
 }
 
-const toggleSidebar = () =>
-  (sidebarElement.style.display =
-    sidebarElement.style.display === 'block' ? 'none' : 'block');
+const toggleSidebar = () => {
+  let state = sidebarElement.style.display === "block" ? "none" : "block";
+  sidebarElement.style.display = state;
+};
 
 function render() {
   if (library.length > 0) {
@@ -37,18 +37,20 @@ function render() {
       </thead>
     <tbody>`;
     let i = 1;
-    library.forEach(({ title, author, descript }) => {
+    library.forEach(({ title, author, descript, status }) => {
       books += `
-        <tr id='row-${i}'>
+        <tr id='${i}'>
           <td>${i}</td>
           <td>${title}</td>
           <td>${author}</td>
           <td>${descript}</td>
-          <td id='status-${i}' class='not-read'><i class='material-icons'>
-          maximize
-          </i></td>
+          <td id='${i}' class='${status === 'not-read' ? 'not-read' : 'read'}'>
+          <i class='material-icons'>
+          ${status === 'not-read' ? 'maximize' : 'done'}
+          </i>
+          </td>
         </tr>`;
-      i++;
+      i+=1;
     });
     books += `</tbody></table>`;
     contentElement.innerHTML = books;
@@ -62,40 +64,34 @@ function render() {
 
 render();
 
-addNewBookBtn.addEventListener('click', () => {
+addNewBookBtn.addEventListener("click", () => {
   toggleSidebar();
 });
 
-closeSidebarBtn.addEventListener('click', () => {
+closeSidebarBtn.addEventListener("click", () => {
   toggleSidebar();
 });
 
-formElement.addEventListener('submit', e => {
+formElement.addEventListener("submit", (e) => {
   const formData = new FormData(e.target);
   const data = [];
   formData.forEach(inputData => {
     data.push(inputData);
   });
   addBooks(new Book(data));
-  localStorage.setItem('library', JSON.stringify(library));
+  localStorage.setItem("library", JSON.stringify(library));
   render();
   formElement.reset();
   toggleSidebar();
   e.preventDefault();
 });
 
-contentElement.addEventListener('click', e => {
-  document.getElementById(e.target.id).innerHTML =
-    document.getElementById(e.target.id).className === 'not-read'
-      ? `<i class='material-icons'>
-      done
-      </i>`
-      : `<i class='material-icons'>
-      maximize
-      </i>`;
-  document.getElementById(e.target.id).className =
-    document.getElementById(e.target.id).className === 'not-read'
-      ? 'read'
-      : 'not-read';
+contentElement.addEventListener("click", (e) => {
+  if(Number(e.target.parentNode.id) != NaN) {
+    const bookId = Number(e.target.parentNode.id) - 1;
+    const currentState = library[bookId].status;
+    library[bookId].status = currentState === 'not-read' ? 'read' : 'not-read';
+    render();
+  }
   e.preventDefault();
 });
