@@ -3,8 +3,10 @@ const addNewBookBtn = document.getElementById('new-book-btn');
 const closeSidebarBtn = document.getElementById('close-btn');
 const contentElement = document.getElementById('content');
 const formElement = document.getElementById('new-book-form');
+const getFromLocalStorage = () => JSON.parse(localStorage.getItem('library'));
+const saveToLocalStorage = () => localStorage.setItem('library', JSON.stringify(library));
 
-const library =  getFromLocalStorage() || [];
+const library = getFromLocalStorage() || [];
 
 function Book([title, noOfPages, author, descript, status = 'not-read']) {
   this.title = title;
@@ -20,12 +22,6 @@ function addBooks(book) {
 
 function deleteBook(id) { 
   library.splice(id, 1); 
-}
-function getFromLocalStorage() {
-  return JSON.parse(localStorage.getItem('library'));
-}
-function saveToLocalStorage() {
-  localStorage.setItem('library', JSON.stringify(library));
 }
 
 const toggleSidebar = () => {
@@ -106,14 +102,15 @@ formElement.addEventListener('submit', (e) => {
 contentElement.addEventListener('click', (e) => {
   const parentNodeId = e.target.parentNode.id
   const clickType = e.target.getAttribute('data-click-type');
-  const hasBookId = parentNodeId !== '' && !isNaN(Number(parentNodeId));
   // eslint-disable-next-line no-restricted-globals
+  const hasBookId = parentNodeId !== '' && !isNaN(Number(parentNodeId));
+
   if (hasBookId) {
-    if(clickType === 'status') {
+    if (clickType === 'status') {
       const bookId = Number(parentNodeId) - 1;
       const currentState = library[bookId].status;
       library[bookId].status = currentState === 'not-read' ? 'read' : 'not-read';
-    } else if (clickType === 'delete'){
+    } else if (clickType === 'delete') {
       deleteBook(Number(parentNodeId) - 1);
       saveToLocalStorage();
     }
