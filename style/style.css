@@ -1,5 +1,6 @@
 body {
   margin: 0px;
+  height: 100vh;
   font-family: "Calistoga", cursive;
   color: white;
   letter-spacing: 0.2rem;
@@ -11,9 +12,9 @@ body {
     #002e58,
     #00345c
   );
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
-  overflow: scroll;
+  overflow-y: auto;
 }
 
 nav {
