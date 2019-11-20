@@ -37,6 +37,7 @@ function render() {
       </thead>
     <tbody>`;
     let i = 1;
+    // eslint-disable-next-line object-curly-newline
     library.forEach(({ title, author, descript, status }) => {
       books += `
         <tr id='${i}'>
@@ -87,6 +88,7 @@ formElement.addEventListener('submit', (e) => {
 });
 
 contentElement.addEventListener('click', (e) => {
+  // eslint-disable-next-line no-restricted-globals
   if (!isNaN(Number(e.target.parentNode.id))) {
     const bookId = Number(e.target.parentNode.id) - 1;
     const currentState = library[bookId].status;
