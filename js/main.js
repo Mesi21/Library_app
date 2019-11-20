@@ -6,15 +6,20 @@ const formElement = document.getElementById('new-book-form');
 
 const library = JSON.parse(localStorage.getItem('library')) || [];
 
-function Book([title, author, descript, status = 'not-read']) {
+function Book([title, noOfPages, author, descript, status = 'not-read']) {
   this.title = title;
   this.author = author;
+  this.noOfPages = noOfPages;
   this.descript = descript;
   this.status = status;
 }
 
 function addBooks(book) {
   library.push(book);
+}
+
+function deleteBook(id) { 
+  library.splice(id, 1); 
 }
 
 const toggleSidebar = () => {
@@ -29,20 +34,21 @@ function render() {
       <thead>
         <tr>
           <th>Id</th>
-          <th>Author</th>
           <th>Title</th>
+          <th>Author</th>
           <th>Description</th>
           <th>Status</th>
+          <th>Option</th>
         </tr>
       </thead>
     <tbody>`;
     let i = 1;
     // eslint-disable-next-line object-curly-newline
-    library.forEach(({ title, author, descript, status }) => {
+    library.forEach(({ title, noOfPages, author, descript, status }) => {
       books += `
         <tr id='${i}'>
           <td>${i}</td>
-          <td>${title}</td>
+          <td>${title}, ${noOfPages} Pages</td>
           <td>${author}</td>
           <td>${descript}</td>
           <td id='${i}' class='${status === 'not-read' ? 'not-read' : 'read'}'>
@@ -50,6 +56,7 @@ function render() {
           ${status === 'not-read' ? 'maximize' : 'done'}
           </i>
           </td>
+          <td><button class='delete' onClick='deleteBook(${i-1})'>Delete</button></td>
         </tr>`;
       i += 1;
     });
@@ -62,7 +69,6 @@ function render() {
       </table>`;
   }
 }
-
 render();
 
 addNewBookBtn.addEventListener('click', () => {
@@ -87,7 +93,7 @@ formElement.addEventListener('submit', (e) => {
   e.preventDefault();
 });
 
-contentElement.addEventListener('click', (e) => {
+/* contentElement.addEventListener('click', (e) => {
   // eslint-disable-next-line no-restricted-globals
   if (e.target.parentNode.id !== '' && !isNaN(Number(e.target.parentNode.id))) {
     const bookId = Number(e.target.parentNode.id) - 1;
@@ -97,3 +103,10 @@ contentElement.addEventListener('click', (e) => {
   }
   e.preventDefault();
 });
+
+contentElement.addEventListener('click', (e) =>{
+  deleteBook(e.target.id);
+  localStorage.setItem('library', JSON.stringify(library));
+  render();
+  e.preventDefault();
+}); */
