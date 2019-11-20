@@ -78,9 +78,15 @@ nav {
 #close-btn i {
   margin: 0;
 }
-#sidebar form {
-  width: 50%;
-  margin: 0px auto;
+#new-book-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#sidebar input, #sidebar textarea{
+  max-width: 400px;
 }
 #sidebar form input,
 #sidebar form textarea {
@@ -98,6 +104,12 @@ nav {
 #sidebar form input::placeholder,
 #sidebar form textarea::placeholder {
   color: rgb(161, 161, 161);
+}
+#save-btn[type=submit]{
+  background-color: blue;
+  border-radius: 2rem;
+  color: white;
+  font-family: "Calistoga", cursive;
 }
 .empty-note {
   text-align: center;
