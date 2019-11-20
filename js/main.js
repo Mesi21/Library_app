@@ -52,7 +52,7 @@ function render() {
         </tr>`;
       i += 1;
     });
-    books += `</tbody></table>`;
+    books += '</tbody></table>';
     contentElement.innerHTML = books;
   } else {
     contentElement.innerHTML = `<table id='table'>
@@ -87,7 +87,7 @@ formElement.addEventListener('submit', (e) => {
 });
 
 contentElement.addEventListener('click', (e) => {
-  if (isNaN(Number(e.target.parentNode.id)))  {
+  if (!isNaN(Number(e.target.parentNode.id))) {
     const bookId = Number(e.target.parentNode.id) - 1;
     const currentState = library[bookId].status;
     library[bookId].status = currentState === 'not-read' ? 'read' : 'not-read';
