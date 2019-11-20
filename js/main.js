@@ -18,8 +18,8 @@ function addBooks(book) {
   library.push(book);
 }
 
-function deleteBook(id) { 
-  library.splice(id, 1); 
+function deleteBook(id) {
+  library.splice(id, 1);
 }
 const toggleSidebar = () => {
   const state = sidebarElement.style.display === 'block' ? 'none' : 'block';
@@ -97,7 +97,7 @@ formElement.addEventListener('submit', (e) => {
 });
 
 contentElement.addEventListener('click', (e) => {
-  const parentNodeId = e.target.parentNode.id
+  const parentNodeId = e.target.parentNode.id;
   const clickType = e.target.getAttribute('data-click-type');
   // eslint-disable-next-line no-restricted-globals
   const hasBookId = (parentNodeId !== '' && !isNaN(Number(parentNodeId)));
