@@ -46,6 +46,12 @@ nav {
 
 #sidebar {
   display: none;
+  background-color: #111;
+  opacity: 0.95;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition-timing-function: ease-in-out;
+  transition: 2s;
   position: absolute;
   top: 0px;
   right: 0px;

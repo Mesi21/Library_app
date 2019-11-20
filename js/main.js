@@ -5,12 +5,13 @@ const saveNewBookBtn = document.getElementById("save-btn");
 const contentElement = document.getElementById("content");
 const formElement = document.getElementById("new-book-form");
 
-let library = [];
+let library = JSON.parse(localStorage.getItem("library")) || [];
 
-const Book = function([title, author, descript]) {
+const Book = function([title, author, descript, status = 'not read']) {
   this.title = title;
   this.author = author;
   this.descript = descript;
+  this.status = status;
 };
 
 function addBooks(book) {
@@ -76,6 +77,7 @@ formElement.addEventListener("submit", e => {
     data.push(inputData);
   });
   addBooks(new Book(data));
+  localStorage.setItem("library", JSON.stringify(library));
   render();
   formElement.reset();
   toggleSidebar();
