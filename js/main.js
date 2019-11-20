@@ -89,7 +89,7 @@ formElement.addEventListener('submit', (e) => {
 
 contentElement.addEventListener('click', (e) => {
   // eslint-disable-next-line no-restricted-globals
-  if (!isNaN(Number(e.target.parentNode.id))) {
+  if (e.target.parentNode.id !== '' && !isNaN(Number(e.target.parentNode.id))) {
     const bookId = Number(e.target.parentNode.id) - 1;
     const currentState = library[bookId].status;
     library[bookId].status = currentState === 'not-read' ? 'read' : 'not-read';
