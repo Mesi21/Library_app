@@ -109,8 +109,8 @@ contentElement.addEventListener('click', (e) => {
       library[bookId].status = currentState === 'not-read' ? 'read' : 'not-read';
     } else if (clickType === 'delete') {
       deleteBook(Number(parentNodeId) - 1);
-      saveToLocalStorage();
     }
+    saveToLocalStorage();
     render();
   }
   e.preventDefault();
