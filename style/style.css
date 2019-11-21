@@ -30,7 +30,7 @@ nav {
   display: flex;
   align-items: center;
   border: none;
-  background-color: blue;
+  background-color: rgb(103, 212, 0);
   border-radius: 2rem;
   color: white;
   font-family: "Calistoga", cursive;
@@ -106,7 +106,7 @@ nav {
   color: rgb(161, 161, 161);
 }
 #save-btn[type="submit"] {
-  background-color: blue;
+  background-color: rgb(103, 212, 0);
   border-radius: 2rem;
   color: white;
   font-family: "Calistoga", cursive;
@@ -118,16 +118,16 @@ nav {
 }
 table {
   margin: 0px auto;
-  border: 1px solid blue;
+  border: 1px solid rgb(103, 212, 0);
   border-collapse: collapse;
   border-spacing: 0px;
 }
 table th {
-  color: blue;
+  color: rgb(103, 212, 0);
 }
 table td,
 table th {
-  border: 1px solid blue;
+  border: 1px solid rgb(103, 212, 0);
   padding: 1.5rem 3rem;
 }
 
