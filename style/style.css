@@ -1,0 +1,147 @@
+body {
+  margin: 0px;
+  height: 100vh;
+  font-family: "Calistoga", cursive;
+  color: white;
+  letter-spacing: 0.2rem;
+  background-image: linear-gradient(
+    to right bottom,
+    #001e4a,
+    #00234f,
+    #002953,
+    #002e58,
+    #00345c
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: auto;
+}
+
+nav {
+  display: flex;
+  max-width: 900px;
+  margin: 1rem auto;
+  justify-content: space-between;
+  align-items: center;
+}
+.app-title {
+  font-size: 4rem;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: blue;
+  border-radius: 2rem;
+  color: white;
+  font-family: "Calistoga", cursive;
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  height: fit-content;
+}
+.btn i {
+  margin-right: 0.5rem;
+}
+
+#sidebar {
+  display: none;
+  background-color: #111;
+  opacity: 0.95;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition-timing-function: ease-in-out;
+  transition: 2s;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 100vh;
+  width: 50vw;
+  z-index: 10;
+  background-image: linear-gradient(
+    to right bottom,
+    #001e4a,
+    #00234f,
+    #002953,
+    #002e58,
+    #00345c
+  );
+  text-align: center;
+}
+#sidebar h1 {
+  font-size: 3rem;
+}
+#close-btn {
+  background-color: red;
+  margin: 20px;
+}
+#close-btn i {
+  margin: 0;
+}
+#new-book-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#sidebar input,
+#sidebar textarea {
+  max-width: 400px;
+}
+#sidebar form input,
+#sidebar form textarea {
+  display: block;
+  outline: none;
+  border: none;
+  margin: 20px;
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  font-family: "Calistoga", cursive;
+  background-color: #00345c;
+  color: white;
+  width: 100%;
+}
+#sidebar form input::placeholder,
+#sidebar form textarea::placeholder {
+  color: rgb(161, 161, 161);
+}
+#save-btn[type="submit"] {
+  background-color: blue;
+  border-radius: 2rem;
+  color: white;
+  font-family: "Calistoga", cursive;
+}
+.empty-note {
+  text-align: center;
+  margin: 4rem;
+  color: lightgray;
+}
+table {
+  margin: 0px auto;
+  border: 1px solid blue;
+  border-collapse: collapse;
+  border-spacing: 0px;
+}
+table th {
+  color: blue;
+}
+table td,
+table th {
+  border: 1px solid blue;
+  padding: 1.5rem 3rem;
+}
+
+.not-read i {
+  color: goldenrod;
+  font-size: 2rem;
+}
+.read i {
+  color: green;
+  font-size: 2rem;
+}
+
+.delete-btn {
+  color: red;
+  cursor: pointer;
+}
